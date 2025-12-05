@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>即時互動數位白板V3.1(icon更新版)</title>
+    <title>即時互動數位白板V4(icon更新版)</title>
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -97,14 +98,17 @@
 
     <!-- Landing View: Role selection and session management -->
     <div id="landing-view" class="relative h-screen w-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <button id="firebase-config-btn" class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-2 rounded-xl shadow-lg hover:bg-purple-600 transition-colors duration-300 text-sm font-bold flex items-center bg-opacity-90 backdrop-blur-sm z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6m0 6v6m5.6-13.6l-4.2 4.2m-2.8 2.8l-4.2 4.2M23 12h-6m-6 0H1m17.6 5.6l-4.2-4.2m-2.8-2.8l-4.2-4.2"></path></svg>
-            <span>Firebase設定</span>
-        </button>
-        <a href="https://filedn.com/laMtL9jmKf7JrDEQG0A6OPy/html/firebase-%E4%BA%92%E5%8B%95%E7%99%BD%E6%9D%BF/%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95%E6%95%B8%E4%BD%8D%E7%99%BD%E6%9D%BF_%E6%95%99%E5%B8%AB%E5%BB%BA%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8A.html" target="_blank" rel="noopener noreferrer" class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-2 rounded-xl shadow-lg hover:bg-amber-600 transition-colors duration-300 text-sm font-bold flex items-center bg-opacity-90 backdrop-blur-sm z-10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            <span>建置操作手冊</span>
-        </a>
+        <!-- 右上角按鈕區 -->
+        <div class="absolute top-4 right-4 z-10 flex gap-2">
+            <button id="firebase-settings-btn" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-md transition-all duration-200 hover:shadow-lg" title="Firebase 設定">
+                <i class="fas fa-cog mr-2"></i>
+                Firebase 設定
+            </button>
+            <a href="https://filedn.com/laMtL9jmKf7JrDEQG0A6OPy/html/firebase-%E4%BA%92%E5%8B%95%E7%99%BD%E6%9D%BF/%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95%E6%95%B8%E4%BD%8D%E7%99%BD%E6%9D%BF_%E6%95%99%E5%B8%AB%E5%BB%BA%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8A.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg shadow-md transition-all duration-200 hover:shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                建置操作手冊
+            </a>
+        </div>
         <div class="w-full max-w-6xl">
             <!-- Header -->
             <div class="text-center mb-12">
@@ -195,7 +199,7 @@
                     ❓ 需要幫助？點此查看 Firebase 設定說明
                 </button>
                 <div class="text-gray-500 text-sm">
-                    Made with ❤️ by <a href="https://kentxchang.blogspot.tw" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold underline">阿剛老師 V3.1</a>
+                    Made with ❤️ by <a href="https://kentxchang.blogspot.tw" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold underline">阿剛老師 V4</a>
                 </div>
             </div>
         </div>
@@ -361,61 +365,6 @@
         </div>
     </div>
 
-    <!-- Firebase Config Modal -->
-    <div id="firebase-config-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-4 relative max-h-[90vh] overflow-y-auto">
-            <button id="close-firebase-config-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold leading-none">&times;</button>
-            <h2 class="text-2xl font-bold text-center text-purple-600">Firebase 設定</h2>
-            <p class="text-center text-gray-600">請貼上您的 Firebase 配置資料（6行，不需要{}）</p>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Firebase 配置資料</label>
-                    <textarea id="firebase-config-input" rows="1" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono text-sm overflow-y-auto" placeholder='apiKey: "demo", authDomain: "demo", projectId: "demo", storageBucket: "demo", messagingSenderId: "demo", appId: "demo V3.2"' style="resize: vertical; min-height: 2.5rem;"></textarea>
-                    <p class="text-xs text-gray-500 mt-1">請貼上6行配置資料，使用捲動查看完整內容（可拖曳調整高度）</p>
-                </div>
-
-                <button id="save-firebase-config-btn" class="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white py-3 rounded-lg hover:from-purple-600 hover:to-purple-700 transition font-bold text-lg shadow-md hover:shadow-lg">
-                    💾 儲存配置
-                </button>
-
-                <div class="relative my-4">
-                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                        <div class="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div class="relative flex justify-center">
-                        <span class="bg-white px-2 text-sm text-gray-500">分享配置</span>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">生成可分享的網址</label>
-                    <button id="generate-url-btn" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition font-bold text-lg shadow-md hover:shadow-lg">
-                        🔗 生成網址並複製
-                    </button>
-                    <p class="text-xs text-gray-500 mt-1">生成的網址會自動複製到剪貼簿，其他人開啟後會自動填入配置</p>
-                </div>
-
-                <div class="relative my-4">
-                    <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                        <div class="w-full border-t border-gray-300"></div>
-                    </div>
-                    <div class="relative flex justify-center">
-                        <span class="bg-white px-2 text-sm text-gray-500">資料管理</span>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">清除本地暫存配置</label>
-                    <button id="clear-local-config-btn" class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-3 rounded-lg hover:from-red-600 hover:to-red-700 transition font-bold text-lg shadow-md hover:shadow-lg">
-                        🗑️ 刪除本地暫存資料
-                    </button>
-                    <p class="text-xs text-gray-500 mt-1">清除儲存在本機的 Firebase 配置資料，刪除後需重新設定</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Firebase Setup Modal -->
     <div id="setup-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-60 flex items-center justify-center z-50 p-4">
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-8 space-y-4 relative max-h-[90vh] overflow-y-auto">
@@ -497,7 +446,68 @@ service cloud.firestore {
             </div>
         </div>
     </div>
-    
+
+    <!-- Firebase 設定 Modal -->
+    <div id="firebase-settings-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[110] flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 max-w-lg w-full my-auto max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">貼上 Firebase 設定</h2>
+                <button id="firebase-settings-modal-close-btn" class="text-gray-400 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            <p class="text-sm text-gray-600 mb-3">
+                請從您的 Firebase 專案中，複製 <code>firebaseConfig</code> 物件 <code>{</code> 和 <code>}</code> <strong>之間</strong>的六行內容，貼到下方：
+            </p>
+            <textarea id="firebase-config-textarea" rows="7" class="w-full p-3 border rounded-md font-mono text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="apiKey: &quot;...&quot;,
+authDomain: &quot;...&quot;,
+projectId: &quot;...&quot;,
+storageBucket: &quot;...&quot;,
+messagingSenderId: &quot;...&quot;,
+appId: &quot;...&quot;"></textarea>
+
+            <button id="apply-firebase-settings-btn" class="w-full px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300 mt-4">
+                套用設定
+            </button>
+            <button id="generate-firebase-url-btn" class="w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition duration-300 mt-2 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                生成異機專用網址(可免再設定firebase)
+            </button>
+            <button id="clear-firebase-config-btn" class="w-full px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition duration-300 mt-2">
+                <i class="fas fa-trash-alt mr-2"></i>清除本地設定值
+            </button>
+            <p id="firebase-copy-success-msg" class="text-center mt-3 text-sm font-medium hidden"></p>
+
+            <!-- 網址資訊顯示區域 -->
+            <div id="firebase-url-info" class="hidden mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div class="mb-3">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">短網址 (已複製)</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="firebase-short-url-display" readonly class="flex-1 px-3 py-2 text-sm bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button id="copy-short-url-btn" class="px-3 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition" title="複製短網址">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">原始網址</label>
+                    <div class="flex items-center gap-2">
+                        <input type="text" id="firebase-original-url-display" readonly class="flex-1 px-3 py-2 text-sm bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button id="copy-original-url-btn" class="px-3 py-2 bg-gray-500 text-white text-sm rounded-md hover:bg-gray-600 transition" title="複製原始網址">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR Code 顯示區域 -->
+            <div id="firebase-qrcode-container" class="hidden mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3 text-center">掃描 QR Code 或下載圖片</h3>
+                <div id="firebase-qrcode" class="flex justify-center mb-3"></div>
+                <button id="download-qrcode-btn" class="w-full px-4 py-2 bg-indigo-500 text-white font-medium rounded-lg hover:bg-indigo-600 transition">
+                    <i class="fas fa-download mr-2"></i>下載 QR Code 圖片
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- PDF Preview Modal -->
     <div id="pdf-preview-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl h-[90vh] flex flex-col">
@@ -528,12 +538,9 @@ service cloud.firestore {
     </div>
 
     <!-- Message Overlay -->
-    <div id="message-overlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4" style="z-index: 9999;">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md text-center p-6 space-y-4">
+    <div id="message-overlay" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-60 p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm text-center p-6 space-y-4">
             <p id="message-text" class="text-lg text-gray-800"></p>
-            <div id="qrcode-container" class="hidden flex justify-center items-center py-4">
-                <div id="qrcode"></div>
-            </div>
             <button id="message-ok-btn" class="bg-blue-600 text-white px-8 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">確定</button>
         </div>
     </div>
@@ -641,39 +648,11 @@ service cloud.firestore {
         import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
 
         // --- Custom Message Overlay ---
-        function showMessage(message, qrCodeUrl = null) {
+        function showMessage(message) {
             const overlay = document.getElementById('message-overlay');
             const text = document.getElementById('message-text');
-            const qrcodeContainer = document.getElementById('qrcode-container');
-            const qrcodeElement = document.getElementById('qrcode');
-
             if (overlay && text) {
                 text.textContent = message;
-
-                // Handle QR code display
-                if (qrCodeUrl && qrcodeContainer && qrcodeElement) {
-                    // Clear previous QR code
-                    qrcodeElement.innerHTML = '';
-
-                    // Generate new QR code
-                    try {
-                        new QRCode(qrcodeElement, {
-                            text: qrCodeUrl,
-                            width: 200,
-                            height: 200,
-                            colorDark: "#000000",
-                            colorLight: "#ffffff",
-                            correctLevel: QRCode.CorrectLevel.H
-                        });
-                        qrcodeContainer.classList.remove('hidden');
-                    } catch (error) {
-                        console.error('Error generating QR code:', error);
-                        qrcodeContainer.classList.add('hidden');
-                    }
-                } else if (qrcodeContainer) {
-                    qrcodeContainer.classList.add('hidden');
-                }
-
                 overlay.classList.remove('hidden');
             } else {
                 // Fallback to native alert if UI is not ready
@@ -833,26 +812,8 @@ service cloud.firestore {
             if (okBtn) {
                 okBtn.addEventListener('click', () => {
                     const overlay = document.getElementById('message-overlay');
-                    const qrcodeContainer = document.getElementById('qrcode-container');
-                    const qrcodeElement = document.getElementById('qrcode');
-
-                    if(overlay) {
-                        overlay.classList.add('hidden');
-                        // Clear QR code when closing
-                        if (qrcodeContainer) qrcodeContainer.classList.add('hidden');
-                        if (qrcodeElement) qrcodeElement.innerHTML = '';
-                    }
+                    if(overlay) overlay.classList.add('hidden');
                 });
-            }
-
-            // Check if hide parameter is set and hide Firebase config button (support both new short and old long parameter names)
-            const urlParams = new URLSearchParams(window.location.search);
-            const hideConfig = urlParams.get('hide') || urlParams.get('hideConfig');
-            if (hideConfig === 'true') {
-                const firebaseConfigBtn = document.getElementById('firebase-config-btn');
-                if (firebaseConfigBtn) {
-                    firebaseConfigBtn.style.display = 'none';
-                }
             }
         });
 
@@ -862,12 +823,6 @@ service cloud.firestore {
         const loadingOverlay = document.getElementById('loading-overlay');
         const loadingText = document.getElementById('loading-text');
         const setupModal = document.getElementById('setup-modal');
-        const firebaseConfigModal = document.getElementById('firebase-config-modal');
-        const firebaseConfigBtn = document.getElementById('firebase-config-btn');
-        const closeFirebaseConfigBtn = document.getElementById('close-firebase-config-btn');
-        const firebaseConfigInput = document.getElementById('firebase-config-input');
-        const saveFirebaseConfigBtn = document.getElementById('save-firebase-config-btn');
-        const generateUrlBtn = document.getElementById('generate-url-btn');
 
         // --- Global State ---
         let firebaseApp, db, auth;
@@ -892,133 +847,448 @@ service cloud.firestore {
         const INACTIVITY_TIMEOUT = 30 * 60 * 1000; // 30 minutes in milliseconds
 
         // --- Firebase Initialization ---
-        // ▼▼▼ 請在此處貼上您的 Firebase 設定碼 ▼▼▼
-        const hardcodedFirebaseConfig = {
-  apiKey: "demo",
-  authDomain: "demo",
-  projectId: "demo",
-  storageBucket: "demo",
-  messagingSenderId: "demo",
-  appId: "demo V3.2"
-        };
-        // ▲▲▲ 請在此處貼上您的 Firebase 設定碼 ▲▲▲
+        // Firebase configuration - will be initialized from localStorage, URL, or default
+        let firebaseConfig = null;
+        let isFirebaseConfigApplied = false; // Track if config has been applied
 
-        // Function to parse Firebase config from text (6 lines format)
-        function parseFirebaseConfig(text) {
-            try {
-                const lines = text.trim().split('\n').map(line => line.trim()).filter(line => line);
-                const config = {};
-
-                for (const line of lines) {
-                    // Match pattern: key: "value", or key: "value"
-                    const match = line.match(/(\w+):\s*"([^"]+)"[,]?/);
-                    if (match) {
-                        config[match[1]] = match[2];
-                    }
-                }
-
-                // Validate that we have the required fields
-                if (config.apiKey && config.authDomain && config.projectId) {
-                    return config;
-                }
-                return null;
-            } catch (error) {
-                console.error('Error parsing Firebase config:', error);
-                return null;
-            }
-        }
-
-        // Function to convert Firebase config object to text format
-        function configToText(config) {
-            return `apiKey: "${config.apiKey}",
-authDomain: "${config.authDomain}",
-projectId: "${config.projectId}",
-storageBucket: "${config.storageBucket || ''}",
-messagingSenderId: "${config.messagingSenderId || ''}",
-appId: "${config.appId || ''}"`;
-        }
-
-        // Base64 encoding/decoding functions for URL obfuscation
-        function base64EncodeConfig(text) {
-            try {
-                // Use btoa for base64 encoding, but handle unicode characters
-                return btoa(unescape(encodeURIComponent(text)));
-            } catch (error) {
-                console.error('Error encoding config:', error);
-                return null;
-            }
-        }
-
-        function base64DecodeConfig(encoded) {
-            try {
-                // Decode base64 and handle unicode characters
-                return decodeURIComponent(escape(atob(encoded)));
-            } catch (error) {
-                console.error('Error decoding config:', error);
-                return null;
-            }
-        }
-
-        // Function to get Firebase config with priority order
-        function getFirebaseConfig() {
-            // Priority 1: Check if hardcoded config is not the demo
-            const isHardcodedDemo = hardcodedFirebaseConfig.apiKey === "demo";
-            if (!isHardcodedDemo) {
-                console.log('Using hardcoded Firebase config');
-                return hardcodedFirebaseConfig;
-            }
-
-            // Priority 2: Check URL parameters (support both new short and old long parameter names)
+        /**
+         * Setup Firebase configuration from various sources
+         * Priority: URL parameter > localStorage > hardcoded default
+         */
+        function setupFirebaseConfig() {
             const urlParams = new URLSearchParams(window.location.search);
-            const urlConfig = urlParams.get('fbConfig') || urlParams.get('firebaseConfig');
-            if (urlConfig) {
+            const configParam = urlParams.get('config');
+            let rawConfigString = localStorage.getItem('firebaseConfig');
+            let configSource = "localStorage";
+
+            // Priority 1: Check URL parameter
+            if (!rawConfigString && configParam) {
                 try {
-                    const urlDecoded = decodeURIComponent(urlConfig);
+                    rawConfigString = atob(configParam);
+                    configSource = "URL";
+                    console.log("從 URL 參數載入 Firebase 設定");
+                } catch (error) {
+                    console.error("無法解碼 URL 參數中的 Firebase 設定:", error);
+                }
+            }
 
-                    // Try Base64 decoding first (new format)
-                    let decodedConfig = base64DecodeConfig(urlDecoded);
+            // Priority 2: Check localStorage
+            if (rawConfigString) {
+                try {
+                    if (applyFirebaseConfig(rawConfigString)) {
+                        isFirebaseConfigApplied = true;
+                        console.log(`已從 ${configSource} 自動載入並套用 Firebase 設定。`);
 
-                    // If Base64 decoding fails, assume it's the old plain text format
-                    if (!decodedConfig) {
-                        decodedConfig = urlDecoded;
-                    }
-
-                    const parsedConfig = parseFirebaseConfig(decodedConfig);
-                    if (parsedConfig) {
-                        console.log('Using Firebase config from URL');
-                        // Save to localStorage for future use
-                        localStorage.setItem('firebaseConfig', decodedConfig);
-                        return parsedConfig;
+                        // If from URL, save to localStorage
+                        if (configSource === "URL") {
+                            localStorage.setItem('firebaseConfig', rawConfigString);
+                            console.log("已將 URL 設定儲存至 localStorage");
+                        }
+                        return true;
                     }
                 } catch (error) {
-                    console.error('Error parsing URL config:', error);
+                    console.error(`從 ${configSource} 載入 Firebase 設定失敗:`, error);
                 }
             }
 
-            // Priority 3: Check localStorage
-            const savedConfig = localStorage.getItem('firebaseConfig');
-            if (savedConfig) {
-                const parsedConfig = parseFirebaseConfig(savedConfig);
-                if (parsedConfig) {
-                    console.log('Using Firebase config from localStorage');
-                    return parsedConfig;
-                }
+            // Priority 3: Use hardcoded default config (demo)
+            // ▼▼▼ 請在此處貼上您的 Firebase 設定碼 ▼▼▼
+            firebaseConfig = {
+                apiKey: "demo",
+                authDomain: "demo",
+                projectId: "demo3.1",
+                storageBucket: "demo",
+                messagingSenderId: "demo",
+                appId: "demo"
+            };
+            // ▲▲▲ 請在此處貼上您的 Firebase 設定碼 ▲▲▲
+
+            // Check if this is a valid config (not demo)
+            if (firebaseConfig.apiKey !== "demo" && !firebaseConfig.apiKey.startsWith("demo")) {
+                isFirebaseConfigApplied = true;
+                console.log("已從原始碼中的備用設定自動載入並套用 Firebase 設定。");
+                return true;
             }
 
-            // Default: Return demo config
-            console.log('Using demo Firebase config');
-            return hardcodedFirebaseConfig;
+            // No valid config found
+            console.warn("未找到 Firebase 設定，請使用右上角按鈕進行設定");
+            return 'demo';
         }
 
-        const firebaseConfig = getFirebaseConfig();
+        /**
+         * Apply Firebase configuration from string
+         */
+        function applyFirebaseConfig(rawConfigString) {
+            try {
+                if (!rawConfigString || !rawConfigString.trim()) {
+                    throw new Error("設定內容為空");
+                }
+
+                console.log('原始輸入:', rawConfigString);
+
+                let configString = rawConfigString.trim();
+
+                // Remove comments (but be careful not to remove URLs)
+                configString = configString
+                    .split('\n')
+                    .map(line => {
+                        // Remove single-line comments at the end of lines
+                        const commentIndex = line.indexOf('//');
+                        if (commentIndex !== -1) {
+                            // Check if // is inside a string (basic check)
+                            const beforeComment = line.substring(0, commentIndex);
+                            const quoteCount = (beforeComment.match(/"/g) || []).length;
+                            // If even number of quotes, the // is outside strings
+                            if (quoteCount % 2 === 0) {
+                                line = beforeComment;
+                            }
+                        }
+                        return line;
+                    })
+                    .join('\n')
+                    .replace(/\/\*[\s\S]*?\*\//g, ''); // Remove multi-line comments
+
+                console.log('移除註解後:', configString);
+
+                // Try to extract the config object from various formats
+                let jsonString = '';
+
+                // Case 1: Check if it contains "const" or "var" or "let" (full declaration)
+                if (/(?:const|var|let)\s+\w+\s*=\s*\{/.test(configString)) {
+                    console.log('檢測到: 完整 JavaScript 宣告格式');
+                    // Extract content between first { and last }
+                    const firstBrace = configString.indexOf('{');
+                    const lastBrace = configString.lastIndexOf('}');
+                    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+                        jsonString = configString.substring(firstBrace, lastBrace + 1);
+                    }
+                }
+                // Case 2: Check if it already has { } braces (complete object)
+                else if (configString.trim().startsWith('{') && configString.trim().endsWith('}')) {
+                    console.log('檢測到: 完整 JSON 物件格式');
+                    jsonString = configString.trim();
+                }
+                // Case 3: Check if it ends with }; (object with semicolon)
+                else if (configString.trim().startsWith('{') && /\}\s*;?\s*$/.test(configString.trim())) {
+                    console.log('檢測到: JSON 物件帶分號格式');
+                    jsonString = configString.trim().replace(/;?\s*$/, '');
+                }
+                // Case 4: Assume it's just the content between braces
+                else {
+                    console.log('檢測到: 純屬性格式');
+                    // Remove any trailing semicolons or commas
+                    configString = configString.replace(/[;,]\s*$/, '').trim();
+                    jsonString = `{${configString}}`;
+                }
+
+                console.log('提取後的 JSON 字串:', jsonString);
+
+                // Clean up the JSON string
+                jsonString = jsonString
+                    .replace(/,(\s*[}\]])/g, '$1') // Remove trailing commas
+                    .replace(/'/g, '"') // Replace single quotes with double quotes
+                    .trim();
+
+                // Convert JavaScript object literal to valid JSON
+                // Add double quotes around property names (only at the beginning or after comma/brace)
+                jsonString = jsonString.replace(/([{,]\s*)(\w+)(\s*):/g, '$1"$2"$3:');
+
+                console.log('清理後準備解析的 JSON 字串:', jsonString);
+
+                // Try to parse the JSON
+                firebaseConfig = JSON.parse(jsonString);
+
+                // Validate required fields
+                if (!firebaseConfig.apiKey || !firebaseConfig.projectId || !firebaseConfig.authDomain) {
+                    throw new Error("設定檔中缺少必要欄位 (apiKey, projectId, authDomain)");
+                }
+
+                console.log("✅ Firebase 設定套用成功", firebaseConfig);
+                return true;
+
+            } catch (error) {
+                console.error("❌ 套用 Firebase 設定失敗:", error);
+                console.error("錯誤詳情:", error.message);
+
+                let errorMsg = "設定格式錯誤，請檢查內容";
+
+                if (error instanceof SyntaxError) {
+                    errorMsg = "JSON 格式錯誤\n\n請確認：\n1. 屬性名稱使用雙引號\n2. 沒有多餘的逗號\n3. 所有引號都正確配對\n\n查看瀏覽器 Console 了解詳情";
+                } else if (error.message.includes("必要欄位")) {
+                    errorMsg = error.message;
+                } else if (error.message.includes("為空")) {
+                    errorMsg = "請貼上 Firebase 設定內容";
+                }
+
+                showFirebaseCopyMessage(errorMsg, true);
+                return false;
+            }
+        }
+
+        /**
+         * Show message in Firebase settings modal
+         */
+        function showFirebaseCopyMessage(message, isError = false) {
+            const msgElement = document.getElementById('firebase-copy-success-msg');
+            if (!msgElement) return;
+
+            msgElement.textContent = message;
+            msgElement.classList.remove('hidden');
+
+            if (isError) {
+                msgElement.classList.remove('text-green-500');
+                msgElement.classList.add('text-red-500');
+            } else {
+                msgElement.classList.remove('text-red-500');
+                msgElement.classList.add('text-green-500');
+            }
+
+            setTimeout(() => {
+                msgElement.classList.add('hidden');
+            }, 4000);
+        }
+
+        /**
+         * Handle apply settings button click
+         */
+        function handleApplyFirebaseSettings() {
+            const configContent = document.getElementById('firebase-config-textarea').value.trim();
+            if (!configContent) {
+                showFirebaseCopyMessage("請先貼上設定內容", true);
+                return;
+            }
+
+            localStorage.setItem('firebaseConfigDraft', configContent);
+
+            const applySuccess = applyFirebaseConfig(configContent);
+
+            if (applySuccess) {
+                isFirebaseConfigApplied = true;
+                document.getElementById('generate-firebase-url-btn').disabled = false;
+                localStorage.setItem('firebaseConfig', configContent);
+
+                // Close modal and reload to apply new config
+                document.getElementById('firebase-settings-modal').classList.add('hidden');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            } else {
+                isFirebaseConfigApplied = false;
+                document.getElementById('generate-firebase-url-btn').disabled = true;
+                localStorage.removeItem('firebaseConfig');
+            }
+        }
+
+        /**
+         * Generate short URL using a free URL shortener service
+         */
+        async function generateShortUrl(longUrl) {
+            try {
+                // Try is.gd first (free, no API key needed)
+                const response = await fetch(`https://is.gd/create.php?format=json&url=${encodeURIComponent(longUrl)}`);
+                const data = await response.json();
+
+                if (data.shorturl) {
+                    console.log('短網址生成成功:', data.shorturl);
+                    return data.shorturl;
+                } else if (data.errormessage) {
+                    console.warn('is.gd 錯誤:', data.errormessage);
+                    return await generateShortUrlTinyURL(longUrl);
+                }
+            } catch (error) {
+                console.warn('is.gd 失敗，嘗試 TinyURL:', error);
+                return await generateShortUrlTinyURL(longUrl);
+            }
+
+            return longUrl;
+        }
+
+        /**
+         * Fallback: Generate short URL using TinyURL
+         */
+        async function generateShortUrlTinyURL(longUrl) {
+            try {
+                const response = await fetch(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(longUrl)}`);
+                const shortUrl = await response.text();
+
+                if (shortUrl && shortUrl.startsWith('http')) {
+                    console.log('TinyURL 短網址生成成功:', shortUrl);
+                    return shortUrl;
+                }
+            } catch (error) {
+                console.error('TinyURL 也失敗:', error);
+            }
+
+            console.warn('所有短網址服務都失敗，使用原始網址');
+            return longUrl;
+        }
+
+        /**
+         * Handle generate URL button click
+         */
+        let currentGeneratedUrl = '';
+        let currentShortUrl = '';
+
+        async function handleGenerateFirebaseUrl() {
+            const configContent = document.getElementById('firebase-config-textarea').value.trim();
+
+            if (!configContent || !isFirebaseConfigApplied) {
+                showFirebaseCopyMessage("請先成功套用設定", true);
+                return;
+            }
+
+            try {
+                showFirebaseCopyMessage("正在生成短網址，請稍候...", false);
+
+                const base64Config = btoa(configContent);
+                const newUrl = `${window.location.origin}${window.location.pathname}?config=${base64Config}`;
+                currentGeneratedUrl = newUrl;
+
+                // Generate short URL
+                const shortUrl = await generateShortUrl(newUrl);
+                currentShortUrl = shortUrl;
+
+                // Copy short URL to clipboard
+                const tempInput = document.createElement('textarea');
+                tempInput.value = shortUrl;
+                tempInput.style.position = 'absolute';
+                tempInput.style.left = '-9999px';
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999);
+
+                let success = false;
+                try {
+                    success = document.execCommand('copy');
+                } catch (err) {
+                    console.error('無法自動複製:', err);
+                }
+
+                document.body.removeChild(tempInput);
+
+                if (success) {
+                    showFirebaseCopyMessage("短網址已複製到剪貼簿！", false);
+                } else {
+                    showFirebaseCopyMessage("複製網址失敗，請手動複製。", true);
+                }
+
+                // Display URLs in UI
+                document.getElementById('firebase-short-url-display').value = shortUrl;
+                document.getElementById('firebase-original-url-display').value = newUrl;
+                document.getElementById('firebase-url-info').classList.remove('hidden');
+
+                // Generate QR Code using short URL
+                generateFirebaseQRCode(shortUrl);
+
+            } catch (error) {
+                console.error("生成網址失敗:", error);
+                showFirebaseCopyMessage("生成網址失敗。", true);
+            }
+        }
+
+        /**
+         * Generate QR Code for the Firebase URL
+         */
+        function generateFirebaseQRCode(url) {
+            const qrcodeContainer = document.getElementById('firebase-qrcode');
+            const qrcodeContainerWrapper = document.getElementById('firebase-qrcode-container');
+
+            if (!qrcodeContainer || !qrcodeContainerWrapper) return;
+
+            // Clear previous QR code
+            qrcodeContainer.innerHTML = '';
+
+            // Generate new QR code
+            try {
+                new QRCode(qrcodeContainer, {
+                    text: url,
+                    width: 256,
+                    height: 256,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                // Show QR code container
+                qrcodeContainerWrapper.classList.remove('hidden');
+
+                console.log('QR Code 已生成');
+            } catch (error) {
+                console.error('生成 QR Code 失敗:', error);
+                showFirebaseCopyMessage("生成 QR Code 失敗", true);
+            }
+        }
+
+        /**
+         * Download QR Code as image
+         */
+        function downloadFirebaseQRCode() {
+            const qrcodeContainer = document.getElementById('firebase-qrcode');
+            if (!qrcodeContainer) return;
+
+            const canvas = qrcodeContainer.querySelector('canvas');
+
+            if (!canvas) {
+                showFirebaseCopyMessage("請先生成 QR Code", true);
+                return;
+            }
+
+            try {
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'firebase-qrcode.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
+                    showFirebaseCopyMessage("QR Code 已下載", false);
+                });
+            } catch (error) {
+                console.error('下載 QR Code 失敗:', error);
+                showFirebaseCopyMessage("下載 QR Code 失敗", true);
+            }
+        }
+
+        /**
+         * Handle clear Firebase configuration button click
+         */
+        function handleClearFirebaseConfig() {
+            if (confirm('確定要清除本地儲存的 Firebase 設定嗎？清除後需要重新整理頁面才會生效。')) {
+                // Clear all Firebase-related data from localStorage
+                localStorage.removeItem('firebaseConfig');
+                localStorage.removeItem('firebaseConfigDraft');
+
+                // Clear the textarea
+                document.getElementById('firebase-config-textarea').value = '';
+
+                // Show success message
+                showFirebaseCopyMessage("本地設定值已清除，請重新整理頁面", false);
+
+                // Disable generate URL button
+                document.getElementById('generate-firebase-url-btn').disabled = true;
+
+                // Hide URL info and QR code if visible
+                document.getElementById('firebase-url-info').classList.add('hidden');
+                document.getElementById('firebase-qrcode-container').classList.add('hidden');
+
+                console.log("Firebase 本地設定已清除");
+            }
+        }
 
         function initApp() {
-            if (!firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
+            // Setup Firebase config from localStorage, URL, or default
+            const configResult = setupFirebaseConfig();
+
+            // Always show the landing view so users can access Firebase settings button
+            landingView.classList.remove('hidden');
+
+            if (configResult === 'demo' || !firebaseConfig || !firebaseConfig.apiKey || firebaseConfig.apiKey === "YOUR_API_KEY") {
+                // Show setup modal as a reminder, but don't block the main view
                 setupModal.classList.remove('hidden');
-                landingView.innerHTML = `<div class="p-8 bg-white rounded-lg shadow-xl text-center">
-                    <h1 class="text-2xl font-bold text-red-600">請先設定 Firebase</h1>
-                    <p class="mt-2 text-gray-700">請依照彈出視窗的說明，在程式碼中完成設定後，重新整理頁面。</p>
-                </div>`;
+                console.warn("未設定 Firebase，請使用右上角的 Firebase 設定按鈕進行設定");
                 return;
             }
 
@@ -1074,6 +1344,12 @@ appId: "${config.appId || ''}"`;
 
         // New teacher login flow
         document.getElementById('teacher-password-submit-btn').addEventListener('click', async () => {
+            // Check if Firebase is initialized
+            if (!db || !auth) {
+                showMessage("⚠️ 請先設定 Firebase\n\n請點擊右上角的「Firebase 設定」按鈕進行設定。");
+                return;
+            }
+
             const inputPassword = document.getElementById('teacher-password').value.trim();
             if (inputPassword !== TEACHER_PASSWORD) {
                 showMessage("❌ 密碼錯誤！\n請輸入正確的教師密碼。");
@@ -1087,7 +1363,7 @@ appId: "${config.appId || ''}"`;
             try {
                 const dropdown = document.getElementById('existing-sessions-dropdown');
                 dropdown.innerHTML = '<option value="">正在載入白板列表...</option>';
-                
+
                 const sessionsQuery = query(collection(db, "sessions"));
                 const sessionsSnapshot = await getDocs(sessionsQuery);
                 
@@ -1119,9 +1395,15 @@ appId: "${config.appId || ''}"`;
         });
 
         document.getElementById('enter-whiteboard-btn').addEventListener('click', async () => {
+            // Check if Firebase is initialized
+            if (!db || !auth) {
+                showMessage("⚠️ 請先設定 Firebase\n\n請點擊右上角的「Firebase 設定」按鈕進行設定。");
+                return;
+            }
+
             const dropdownId = document.getElementById('existing-sessions-dropdown').value;
             const inputId = document.getElementById('session-id-teacher').value.trim();
-            
+
             let sessionIdToUse = inputId || dropdownId;
 
             if (!sessionIdToUse) {
@@ -1236,6 +1518,12 @@ appId: "${config.appId || ''}"`;
         });
 
         document.getElementById('join-session-btn').addEventListener('click', async () => {
+            // Check if Firebase is initialized
+            if (!db || !auth) {
+                showMessage("⚠️ 請先設定 Firebase\n\n請點擊右上角的「Firebase 設定」按鈕進行設定。");
+                return;
+            }
+
             const studentName = document.getElementById('student-name').value.trim();
             if (!studentName) {
                 showMessage("❌ 請輸入您的姓名。");
@@ -1287,6 +1575,58 @@ appId: "${config.appId || ''}"`;
 
         document.getElementById('close-setup-btn').addEventListener('click', () => {
             setupModal.classList.add('hidden');
+        });
+
+        // Firebase settings modal event listeners
+        document.getElementById('firebase-settings-btn').addEventListener('click', () => {
+            const modal = document.getElementById('firebase-settings-modal');
+            modal.classList.remove('hidden');
+
+            // Load existing config if available
+            const savedConfig = localStorage.getItem('firebaseConfig') || localStorage.getItem('firebaseConfigDraft') || '';
+            document.getElementById('firebase-config-textarea').value = savedConfig;
+
+            // Enable generate URL button if config is already applied
+            if (isFirebaseConfigApplied && savedConfig) {
+                document.getElementById('generate-firebase-url-btn').disabled = false;
+            } else {
+                document.getElementById('generate-firebase-url-btn').disabled = true;
+            }
+
+            // Hide QR code container and URL info when opening modal
+            document.getElementById('firebase-qrcode-container').classList.add('hidden');
+            document.getElementById('firebase-qrcode').innerHTML = '';
+            document.getElementById('firebase-url-info').classList.add('hidden');
+        });
+
+        document.getElementById('firebase-settings-modal-close-btn').addEventListener('click', () => {
+            document.getElementById('firebase-settings-modal').classList.add('hidden');
+        });
+
+        document.getElementById('apply-firebase-settings-btn').addEventListener('click', handleApplyFirebaseSettings);
+        document.getElementById('generate-firebase-url-btn').addEventListener('click', handleGenerateFirebaseUrl);
+        document.getElementById('download-qrcode-btn').addEventListener('click', downloadFirebaseQRCode);
+        document.getElementById('clear-firebase-config-btn').addEventListener('click', handleClearFirebaseConfig);
+
+        // Copy URL buttons
+        document.getElementById('copy-short-url-btn').addEventListener('click', () => {
+            const shortUrl = document.getElementById('firebase-short-url-display').value;
+            navigator.clipboard.writeText(shortUrl).then(() => {
+                showFirebaseCopyMessage("短網址已複製", false);
+            }).catch(err => {
+                console.error('複製失敗:', err);
+                showFirebaseCopyMessage("複製失敗", true);
+            });
+        });
+
+        document.getElementById('copy-original-url-btn').addEventListener('click', () => {
+            const originalUrl = document.getElementById('firebase-original-url-display').value;
+            navigator.clipboard.writeText(originalUrl).then(() => {
+                showFirebaseCopyMessage("原始網址已複製", false);
+            }).catch(err => {
+                console.error('複製失敗:', err);
+                showFirebaseCopyMessage("複製失敗", true);
+            });
         });
 
         // Event listener for clicking on session ID to switch canvas
@@ -3844,6 +4184,12 @@ appId: "${config.appId || ''}"`;
         });
 
         document.getElementById('close-session-btn').addEventListener('click', async () => {
+            // Check if Firebase is initialized
+            if (!db || !auth) {
+                showMessage("⚠️ 請先設定 Firebase\n\n請點擊右上角的「Firebase 設定」按鈕進行設定。");
+                return;
+            }
+
             const confirmed = await showConfirm(
                 '⚠️ 警告：清空資料庫',
                 '此操作將永久刪除整個資料庫的所有白板內容，且無法復原。確定要繼續嗎？'
@@ -4844,101 +5190,6 @@ appId: "${config.appId || ''}"`;
         document.getElementById('participant-display').addEventListener('click', openParticipantListModal);
         document.getElementById('close-participant-list-modal').addEventListener('click', closeParticipantListModal);
         document.getElementById('refresh-participant-list-btn').addEventListener('click', renderParticipantList);
-
-        // Event listeners for Firebase config modal
-        firebaseConfigBtn.addEventListener('click', () => {
-            // Load current config from localStorage if exists
-            const savedConfig = localStorage.getItem('firebaseConfig');
-            if (savedConfig) {
-                firebaseConfigInput.value = savedConfig;
-            } else {
-                // Show current config if not demo
-                const isHardcodedDemo = hardcodedFirebaseConfig.apiKey === "demo";
-                if (!isHardcodedDemo) {
-                    firebaseConfigInput.value = configToText(hardcodedFirebaseConfig);
-                }
-            }
-            firebaseConfigModal.classList.remove('hidden');
-        });
-
-        closeFirebaseConfigBtn.addEventListener('click', () => {
-            firebaseConfigModal.classList.add('hidden');
-        });
-
-        saveFirebaseConfigBtn.addEventListener('click', () => {
-            const inputText = firebaseConfigInput.value.trim();
-            if (!inputText) {
-                showMessage('請輸入 Firebase 配置資料');
-                return;
-            }
-
-            const parsedConfig = parseFirebaseConfig(inputText);
-            if (!parsedConfig) {
-                showMessage('配置格式錯誤，請確認格式是否正確');
-                return;
-            }
-
-            // Save to localStorage
-            localStorage.setItem('firebaseConfig', inputText);
-            showMessage('配置已儲存！請重新整理頁面以套用新配置。');
-            firebaseConfigModal.classList.add('hidden');
-        });
-
-        generateUrlBtn.addEventListener('click', () => {
-            const inputText = firebaseConfigInput.value.trim();
-            if (!inputText) {
-                showMessage('請先輸入或儲存 Firebase 配置資料');
-                return;
-            }
-
-            const parsedConfig = parseFirebaseConfig(inputText);
-            if (!parsedConfig) {
-                showMessage('配置格式錯誤，請確認格式是否正確');
-                return;
-            }
-
-            // Generate URL with config parameter (using Base64 encoding for obfuscation)
-            const currentUrl = window.location.href.split('?')[0]; // Remove existing query params
-            const base64Config = base64EncodeConfig(inputText);
-            if (!base64Config) {
-                showMessage('編碼配置時發生錯誤，請重試');
-                return;
-            }
-            const generatedUrl = `${currentUrl}?fbConfig=${encodeURIComponent(base64Config)}&hide=true`;
-
-            // Copy to clipboard
-            navigator.clipboard.writeText(generatedUrl).then(() => {
-                showMessage('網址已複製到剪貼簿！\n\n其他人開啟此網址後會自動設定 Firebase 配置。', generatedUrl);
-            }).catch((error) => {
-                console.error('Failed to copy to clipboard:', error);
-                // Fallback: show the URL in a text area for manual copy
-                const textarea = document.createElement('textarea');
-                textarea.value = generatedUrl;
-                textarea.style.position = 'fixed';
-                textarea.style.opacity = '0';
-                document.body.appendChild(textarea);
-                textarea.select();
-                try {
-                    document.execCommand('copy');
-                    showMessage('網址已複製到剪貼簿！\n\n其他人開啟此網址後會自動設定 Firebase 配置。', generatedUrl);
-                } catch (err) {
-                    showMessage('無法自動複製，請手動複製以下網址：\n\n' + generatedUrl, generatedUrl);
-                }
-                document.body.removeChild(textarea);
-            });
-        });
-
-        // Event listener for clearing local config
-        const clearLocalConfigBtn = document.getElementById('clear-local-config-btn');
-        if (clearLocalConfigBtn) {
-            clearLocalConfigBtn.addEventListener('click', () => {
-                if (confirm('確定要刪除本地暫存的 Firebase 配置資料嗎？\n\n刪除後需要重新設定或使用網址參數才能連接。')) {
-                    localStorage.removeItem('firebaseConfig');
-                    firebaseConfigInput.value = '';
-                    showMessage('本地暫存的 Firebase 配置已刪除！\n\n請重新整理頁面或重新輸入配置。');
-                }
-            });
-        }
 
         initApp();
 
