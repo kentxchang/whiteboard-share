@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>即時互動數位白板V4(icon更新版)</title>
+    <title>剛好白板-即時互動數位白板</title>
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,6 +31,33 @@
     <style>
         /* Custom styles */
         body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+
+        /* Landing Page Card Styles */
+        .landing-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .landing-card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
 
 
         /* Style for selected tool */
@@ -94,37 +121,44 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 overflow-hidden">
+<body class="bg-indigo-50 text-slate-800 overflow-hidden">
 
     <!-- Landing View: Role selection and session management -->
-    <div id="landing-view" class="relative h-screen w-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div id="landing-view" class="relative h-screen w-screen flex items-center justify-center p-4 overflow-y-auto">
         <!-- 右上角按鈕區 -->
         <div class="absolute top-4 right-4 z-10 flex gap-2">
-            <button id="firebase-settings-btn" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg shadow-md transition-all duration-200 hover:shadow-lg" title="Firebase 設定">
-                <i class="fas fa-cog mr-2"></i>
+            <button id="firebase-settings-btn" class="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-md hover:bg-white text-slate-600 text-sm font-medium rounded-xl shadow-sm border border-slate-200 transition-all duration-200" title="Firebase 設定">
+                <i class="fas fa-cog mr-2 text-slate-400"></i>
                 Firebase 設定
             </button>
-            <a href="https://filedn.com/laMtL9jmKf7JrDEQG0A6OPy/html/firebase-%E4%BA%92%E5%8B%95%E7%99%BD%E6%9D%BF/%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95%E6%95%B8%E4%BD%8D%E7%99%BD%E6%9D%BF_%E6%95%99%E5%B8%AB%E5%BB%BA%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8A.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-medium rounded-lg shadow-md transition-all duration-200 hover:shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            <a href="https://filedn.com/laMtL9jmKf7JrDEQG0A6OPy/html/firebase-%E4%BA%92%E5%8B%95%E7%99%BD%E6%9D%BF/%E5%8D%B3%E6%99%82%E4%BA%92%E5%8B%95%E6%95%B8%E4%BD%8D%E7%99%BD%E6%9D%BF_%E6%95%99%E5%B8%AB%E5%BB%BA%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8A.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 bg-amber-100 hover:bg-amber-200 text-amber-700 text-sm font-medium rounded-xl shadow-sm border border-amber-200 transition-all duration-200">
+                <i class="fas fa-book-open mr-2"></i>
                 建置操作手冊
             </a>
         </div>
-        <div class="w-full max-w-6xl">
+        <div class="w-full max-w-6xl mx-auto p-4 sm:p-6 flex flex-col items-center animate-fade-in-up">
             <!-- Header -->
-            <div class="text-center mb-12">
-                <h1 class="text-5xl font-bold text-gray-800 mb-3">📝 即時互動數位白板</h1>
-                <p class="text-xl text-gray-600">專為師生設計的協作空間 ✨</p>
+            <div class="text-center mb-8">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-indigo-200">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-800">剛好白板-即時互動數位白板</h1>
+                </div>
+                <p class="text-lg text-slate-500">專為師生設計的協作空間</p>
             </div>
 
             <!-- Two Column Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:max-w-5xl">
                 <!-- Teacher Section -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 border-4 border-blue-200 hover:border-blue-400 transition-all duration-300 transform hover:scale-105">
-                    <div class="text-center mb-6">
-                        <div class="text-6xl mb-4">👨‍🏫</div>
-                        <h2 class="text-3xl font-bold text-blue-600 mb-2">教師專區</h2>
-                        <p class="text-gray-500">建立或進入您的教學白板</p>
-                    </div>
+                <div class="landing-card group relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-pink-100 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full w-full">
+                        <div class="w-16 h-16 bg-pink-100 text-pink-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-pink-600 group-hover:text-white transition shadow-sm">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-slate-800 mb-2">教師專區</h2>
+                        <p class="text-slate-500 mb-6">建立或進入您的教學白板</p>
                     <div id="teacher-login-step1" class="space-y-4">
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">🔐 教師密碼</label>
@@ -168,38 +202,51 @@
                             <span>清空整個資料庫 (刪除所有白板)</span>
                         </button>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Student Section -->
-                <div class="bg-white rounded-2xl shadow-2xl p-8 border-4 border-green-200 hover:border-green-400 transition-all duration-300 transform hover:scale-105">
-                    <div class="text-center mb-6">
-                        <div class="text-6xl mb-4">👨‍🎓</div>
-                        <h2 class="text-3xl font-bold text-green-600 mb-2">學生專區</h2>
-                        <p class="text-gray-500">加入老師的教學白板</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">👤 您的姓名</label>
-                            <input id="student-name" type="text" placeholder="請輸入您的姓名" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition">
+                <div class="landing-card group relative">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-sky-100 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full w-full">
+                        <div class="w-16 h-16 bg-sky-100 text-sky-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-sky-600 group-hover:text-white transition shadow-sm">
+                            <i class="fas fa-user-graduate"></i>
                         </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">🔑 白板ID</label>
-                            <input id="session-id-student" type="text" placeholder="請輸入老師提供的ID" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition">
+                        <h2 class="text-2xl font-bold text-slate-800 mb-2">學生專區</h2>
+                        <p class="text-slate-500 mb-6">加入老師的教學白板</p>
+
+                        <div class="space-y-4 mt-auto">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">👤 您的姓名</label>
+                                <input id="student-name" type="text" placeholder="請輸入您的姓名" class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">🔑 白板ID</label>
+                                <input id="session-id-student" type="text" placeholder="請輸入老師提供的ID" class="w-full px-4 py-3 border-2 border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition">
+                            </div>
+                            <button id="join-session-btn" class="w-full py-3 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 transition shadow-lg shadow-sky-200">
+                                加入白板 <i class="fas fa-sign-in-alt ml-2"></i>
+                            </button>
                         </div>
-                        <button id="join-session-btn" class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-4 rounded-lg hover:from-green-700 hover:to-green-800 transition font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            ✅ 加入白板
-                        </button>
                     </div>
                 </div>
             </div>
 
             <!-- Footer -->
             <div class="text-center mt-8 space-y-2">
-                <button id="show-setup-btn" class="text-sm text-gray-500 hover:text-blue-600 underline transition">
+                <button id="show-setup-btn" class="text-sm text-slate-500 hover:text-indigo-600 underline transition">
                     ❓ 需要幫助？點此查看 Firebase 設定說明
                 </button>
-                <div class="text-gray-500 text-sm">
-                    Made with ❤️ by <a href="https://kentxchang.blogspot.tw" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 font-semibold underline">阿剛老師 V4</a>
+                <div class="text-slate-400 text-sm">
+                    Made with <i class="fas fa-heart text-pink-400 mx-1"></i> by <a href="https://kentxchang.blogspot.tw" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-600 font-bold hover:underline">阿剛老師 V4</a>
+                </div>
+                <div class="mt-4 text-slate-500 text-xs max-w-2xl mx-auto px-4">
+                    <p class="mb-2">
+                        本作品採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener noreferrer" class="text-indigo-500 hover:text-indigo-600 font-semibold hover:underline">CC BY-NC-SA 4.0 創用CC授權</a>。
+                    </p>
+                    <p class="text-slate-400">
+                        歡迎非商業用途轉載、引用或改編，請保留「阿剛老師」署名，並附上本作品原始連結。
+                    </p>
                 </div>
             </div>
         </div>
@@ -898,7 +945,7 @@ appId: &quot;...&quot;"></textarea>
                 authDomain: "demo",
                 projectId: "demo3.1",
                 storageBucket: "demo",
-                messagingSenderId: "demo",
+                messagingSenderId: "demo4_new_css",
                 appId: "demo"
             };
             // ▲▲▲ 請在此處貼上您的 Firebase 設定碼 ▲▲▲
